@@ -25,21 +25,21 @@ test("Compute a slope given x = random and y = random values", () => {
 });
 
 test("Compute a slope given x = positive and y = positive", () => {
-  expect(computeSlope(x_positive, y_positive)).toBeGreaterThanOrEqual(0);
+  expect(computeSlope(x_positive, y_positive)).toBeGreaterThanOrEqual(1);
   expect(computeSlope(x_positive, y_positive)).toBeLessThanOrEqual(90);
 });
 
 test("Compute a slope given x = positive and y = negative", () => {
-  expect(computeSlope(x_positive, y_negative)).toBeGreaterThanOrEqual(90);
+  expect(computeSlope(x_positive, y_negative)).toBeGreaterThanOrEqual(91);
   expect(computeSlope(x_positive, y_negative)).toBeLessThanOrEqual(180);
 });
 
 test("Compute a slope given x = negative and y = negative", () => {
-  expect(computeSlope(x_negative, y_negative)).toBeGreaterThanOrEqual(180);
+  expect(computeSlope(x_negative, y_negative)).toBeGreaterThanOrEqual(181);
   expect(computeSlope(x_negative, y_negative)).toBeLessThanOrEqual(270);
 });
 
 test("Compute a slope given x = negative and y = positive", () => {
-  expect(computeSlope(x_negative, y_positive)).toBeGreaterThanOrEqual(270);
+  expect(computeSlope(x_negative, y_positive)).toBeGreaterThanOrEqual(271);
   expect(computeSlope(x_negative, y_positive)).toBeLessThanOrEqual(360);
 });
