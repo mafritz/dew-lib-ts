@@ -12,7 +12,7 @@ function sortAffectiveSpace(
   let sortedFeelings: Array<Feeling> = [];
 
   //Determine the function to call to sort the feelings
-  if (space.algorithmType === "radial") {
+  if (space.algorithmType.toLocaleLowerCase() === "radial") {
     //Check if both x and y are 0. If they are, provide random number instead
     if (x === 0 && y === 0) {
       x = getRandomNumber(-100, 100);
@@ -20,9 +20,9 @@ function sortAffectiveSpace(
     }
 
     sortedFeelings = sortByRadialDistance(copyOfFeelings, x, y);
-  } else if (space.algorithmType === "vector") {
+  } else if (space.algorithmType.toLocaleLowerCase() === "vector") {
     sortedFeelings = sortByVectorDistance(copyOfFeelings, x, y);
-  } else if (space.algorithmType === "random") {
+  } else if (space.algorithmType.toLocaleLowerCase() === "random") {
     sortedFeelings = sortByRandomOrder(copyOfFeelings);
   } else {
     console.log("Provide a valid algorithm type.");
