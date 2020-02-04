@@ -1,9 +1,9 @@
-function sortByRadialDistance(
+DEW.sortByRadialDistance = function(
   feelings: Array<Feeling>,
   x: number,
   y: number
 ): Array<Feeling> {
-  let currentSlope = computeSlope(x, y);
+  let currentSlope = DEW.computeSlope(x, y);
 
   function orderByAngle(firstFeeling: Feeling, secondFeeling: Feeling) {
     let firstFeelingAngle = firstFeeling.angle as number;
@@ -17,4 +17,4 @@ function sortByRadialDistance(
   feelings.sort(orderByAngle);
 
   return feelings;
-}
+};

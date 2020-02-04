@@ -1,4 +1,4 @@
-function sortByVectorDistance(
+DEW.sortByVectorDistance = function(
   feelings: Array<Feeling>,
   x: number,
   y: number
@@ -31,4 +31,4 @@ function sortByVectorDistance(
   feelings.sort(orderByVector);
 
   return feelings;
-}
+};

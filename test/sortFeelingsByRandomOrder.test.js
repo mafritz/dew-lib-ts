@@ -1,7 +1,5 @@
 const rewire = require("rewire");
-const dew = rewire("../dist/dew.lib");
-
-const sortAffectiveSpace = dew.__get__("sortAffectiveSpace");
+const DEW = rewire("../dist/dew.lib").__get__("DEW");
 
 const affectiveSpace = {
   name: "EATMINT english circumplex",
@@ -44,7 +42,7 @@ const affectiveSpace = {
 };
 
 test("Test de sortAffectiveSpace function with random order", () => {
-  expect(sortAffectiveSpace(affectiveSpace)).not.toStrictEqual(
+  expect(DEW.sortAffectiveSpace(affectiveSpace)).not.toStrictEqual(
     affectiveSpace.feelings
   );
 });

@@ -1,9 +1,5 @@
 const rewire = require("rewire");
-const dew = rewire("../dist/dew.lib");
-
-const sortAffectiveSpace = dew.__get__("sortAffectiveSpace");
-const getRandomNumber = dew.__get__("getRandomNumber");
-const subsetFeelings = dew.__get__("subsetFeelings");
+const DEW = rewire("../dist/dew.lib").__get__("DEW");
 
 const affectiveSpace = {
   name: "EATMINT english circumplex",
@@ -45,12 +41,12 @@ const affectiveSpace = {
   _id: 5
 };
 
-let x = getRandomNumber(-100, 100);
-let y = getRandomNumber(-100, 100);
+let x = DEW.getRandomNumber(-100, 100);
+let y = DEW.getRandomNumber(-100, 100);
 
-let cardinality = getRandomNumber(1, affectiveSpace.feelings.length);
+let cardinality = DEW.getRandomNumber(1, affectiveSpace.feelings.length);
 
 test("Subset a specific number of feelings", () => {
-  let feelings = sortAffectiveSpace(affectiveSpace, x, y);
-  expect(subsetFeelings(feelings, cardinality).length).toEqual(cardinality);
+  let feelings = DEW.sortAffectiveSpace(affectiveSpace, x, y);
+  expect(DEW.subsetFeelings(feelings, cardinality).length).toEqual(cardinality);
 });

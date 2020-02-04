@@ -1,4 +1,4 @@
-function sortAffectiveSpace(
+DEW.sortAffectiveSpace = function(
   space: AffectiveSpace,
   x: number,
   y: number
@@ -15,18 +15,18 @@ function sortAffectiveSpace(
   if (space.algorithmType.toLocaleLowerCase() === "radial") {
     //Check if both x and y are 0. If they are, provide random number instead
     if (x === 0 && y === 0) {
-      x = getRandomNumber(-100, 100);
-      y = getRandomNumber(-100, 100);
+      x = DEW.getRandomNumber(-100, 100);
+      y = DEW.getRandomNumber(-100, 100);
     }
 
-    sortedFeelings = sortByRadialDistance(copyOfFeelings, x, y);
+    sortedFeelings = DEW.sortByRadialDistance(copyOfFeelings, x, y);
   } else if (space.algorithmType.toLocaleLowerCase() === "vector") {
-    sortedFeelings = sortByVectorDistance(copyOfFeelings, x, y);
+    sortedFeelings = DEW.sortByVectorDistance(copyOfFeelings, x, y);
   } else if (space.algorithmType.toLocaleLowerCase() === "random") {
-    sortedFeelings = sortByRandomOrder(copyOfFeelings);
+    sortedFeelings = DEW.sortByRandomOrder(copyOfFeelings);
   } else {
     console.log("Provide a valid algorithm type.");
   }
 
   return sortedFeelings;
-}
+};

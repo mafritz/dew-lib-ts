@@ -1,4 +1,4 @@
-function shuffleArray(array: Array<any>): Array<any> {
+DEW.shuffleArray = function(array: Array<any>): Array<any> {
   let currentIndex = array.length;
   let temporaryValue, randomIndex;
 
@@ -12,4 +12,4 @@ function shuffleArray(array: Array<any>): Array<any> {
   }
 
   return array;
-}
+};

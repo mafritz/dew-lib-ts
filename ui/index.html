@@ -5,14 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://dynamicemotionwheel.ch/assets/css/dew-website.css"
+    />
   </head>
   <body>
-    <input type="range" id="sliderX" min="-100" max="100" step="1" /><br />
-    <input type="range" id="sliderY" min="-100" max="100" step="1" />
+    <div class="container">
+      <input type="range" id="sliderX" min="-100" max="100" step="1" /><br />
+      <input type="range" id="sliderY" min="-100" max="100" step="1" />
 
-    <p id="computeSlopeResult"></p>
+      <p id="computeSlopeResult"></p>
 
-    <p id="listOfFeelingsResult"></p>
+      <p id="listOfFeelingsResult"></p>
+    </div>
     <script src="../dist/dew.lib.js"></script>
     <script>
       let sliderX = document.getElementById("sliderX");
@@ -63,16 +69,18 @@
       };
 
       function updateInterface() {
-        computeSlopeResult.innerHTML = computeSlope(
+        computeSlopeResult.innerHTML = DEW.computeSlope(
           sliderX.value,
           sliderY.value
         );
 
-        let sortedAffectiveSpace = sortAffectiveSpace(
+        let sortedAffectiveSpace = DEW.sortAffectiveSpace(
           affectiveSpace,
           sliderX.value,
           sliderY.value
         );
+
+        sortedAffectiveSpace = DEW.subsetFeelings(sortedAffectiveSpace, 6);
 
         let sortedLabels = sortedAffectiveSpace.map(function(feeling) {
           return feeling.label;
@@ -87,6 +95,7 @@
           let button = document.createElement("button");
           button.innerHTML = feeling.label;
           button.setAttribute("data-position", index);
+          button.classList.add("btn", "btn-warning", "text-white");
           button.addEventListener("click", function() {
             console.log(feeling);
           });

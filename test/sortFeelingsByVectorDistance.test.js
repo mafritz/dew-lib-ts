@@ -1,8 +1,5 @@
 const rewire = require("rewire");
-const dew = rewire("../dist/dew.lib");
-
-const sortAffectiveSpace = dew.__get__("sortAffectiveSpace");
-const getRandomNumber = dew.__get__("getRandomNumber");
+const DEW = rewire("../dist/dew.lib").__get__("DEW");
 
 const affectiveSpace = {
   id: "ry-s0AORKG",
@@ -45,11 +42,11 @@ const affectiveSpace = {
     "Scherer, K. R., Shuman, V., Fontaine, J. R. J., & Soriano, C. (2013). The GRID meets the Wheel: Assessing emotional feeling via self-report. In J. R. J. Fontaine, K. R. Scherer, & C. Soriano (Eds.), Components of Emotional Meaning: A sourcebook (pp. 281–298). Oxford, UK: Oxford University Press."
 };
 
-let x = getRandomNumber(-100, 100);
-let y = getRandomNumber(-100, 100);
+let x = DEW.getRandomNumber(-100, 100);
+let y = DEW.getRandomNumber(-100, 100);
 
 test("Test sortAffectiveSpace function with vector order", () => {
-  expect(sortAffectiveSpace(affectiveSpace, x, y)).not.toStrictEqual(
+  expect(DEW.sortAffectiveSpace(affectiveSpace, x, y)).not.toStrictEqual(
     affectiveSpace.feelings
   );
 });
