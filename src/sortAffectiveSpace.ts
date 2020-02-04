@@ -1,9 +1,15 @@
-function sortAffectiveSpace(space: AffectiveSpace, x: number, y: number) {
+function sortAffectiveSpace(
+  space: AffectiveSpace,
+  x: number,
+  y: number
+): Array<Feeling> {
   //Create a copy of the feelings array to sort
   let copyOfFeelings: Array<Feeling> = space.feelings.slice(
     0,
     space.feelings.length
   );
+
+  let sortedFeelings: Array<Feeling> = [];
 
   //Determine the function to call to sort the feelings
   if (space.algorithmType === "radial") {
@@ -13,12 +19,14 @@ function sortAffectiveSpace(space: AffectiveSpace, x: number, y: number) {
       y = getRandomNumber(-100, 100);
     }
 
-    return sortByRadialDistance(copyOfFeelings, x, y);
+    sortedFeelings = sortByRadialDistance(copyOfFeelings, x, y);
   } else if (space.algorithmType === "vector") {
-    return sortByVectorDistance(copyOfFeelings, x, y);
+    sortedFeelings = sortByVectorDistance(copyOfFeelings, x, y);
   } else if (space.algorithmType === "random") {
-    return shuffleArray(copyOfFeelings);
+    sortedFeelings = sortByRandomOrder(copyOfFeelings);
   } else {
     console.log("Provide a valid algorithm type.");
   }
+
+  return sortedFeelings;
 }
