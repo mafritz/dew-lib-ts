@@ -8,12 +8,8 @@ const affectiveSpace = DEW.affectiveSpacesList.find(space => {
 let center = DEW.getRandomNumber(0, 500);
 let radius = center + DEW.getRandomNumber(0, 500);
 
-let originalFeelings = [...affectiveSpace.feelings];
-let newFeelings = DEW.getRadialCoordinates(affectiveSpace, center, radius);
-
 test("Compute coordinates from radial circumplex", () => {
-  expect(originalFeelings).not.toStrictEqual(newFeelings);
+  expect(
+    DEW.getRadialCoordinates(affectiveSpace, center, radius)
+  ).not.toStrictEqual(affectiveSpace.feelings);
 });
-
-console.log(originalFeelings);
-console.log(newFeelings);

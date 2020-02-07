@@ -4,10 +4,8 @@ DEW.sortAffectiveSpace = function(
   y: number
 ): Array<Feeling> {
   //Create a copy of the feelings array to sort
-  let copyOfFeelings: Array<Feeling> = space.feelings.slice(
-    0,
-    space.feelings.length
-  );
+  let copyOfAffectiveSpace: AffectiveSpace = JSON.parse(JSON.stringify(space));
+  let copyOfFeelings: Feeling[] = copyOfAffectiveSpace.feelings;
 
   let sortedFeelings: Array<Feeling> = [];
 
