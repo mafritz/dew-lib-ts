@@ -14,7 +14,7 @@ DEW.getRadialCoordinates = function(
 
   let copyOfAffectiveSpace = JSON.parse(JSON.stringify(affectiveSpace));
 
-  return copyOfAffectiveSpace.feelings.map(function(feeling) {
+  return copyOfAffectiveSpace.feelings.map(function(feeling: Feeling) {
     let currentAngle = feeling.angle as number;
     feeling.valueX = getRadialX(currentAngle);
     feeling.valueY = getRadialY(currentAngle);
