@@ -1,4 +1,4 @@
-const affectiveSpacesList: AffectiveSpace[] = [
+DEW.affectiveSpacesList = [
   {
     id: "HyljRCuRFM",
     lang: "fr",
