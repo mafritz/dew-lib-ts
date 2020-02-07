@@ -11,6 +11,7 @@ interface AffectiveSpace {
   citation: string;
   user: string;
   id: string;
-  createdAt?: Date;
-  updatedAt?: Date;
+  createdAt?: string;
+  updatedAt?: string;
+  _id?: number;
 }
