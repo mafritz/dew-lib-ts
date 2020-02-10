@@ -12,12 +12,31 @@
   </head>
   <body>
     <div class="container">
-      <input type="range" id="sliderX" min="-100" max="100" step="1" /><br />
-      <input type="range" id="sliderY" min="-100" max="100" step="1" />
+      <label for="sliderX">Example range</label>
+      <input
+        type="range"
+        class="custom-range"
+        min="-100"
+        max="100"
+        step="1"
+        id="sliderX"
+      />
+      <label for="sliderY">Example range</label>
+      <input
+        type="range"
+        class="custom-range"
+        min="-100"
+        max="100"
+        step="1"
+        id="sliderY"
+      />
 
       <p id="computeSlopeResult"></p>
 
-      <p id="listOfFeelingsResult"></p>
+      <div
+        id="listOfFeelingsResult"
+        class="d-flex justify-content-between flex-fill"
+      ></div>
     </div>
     <script src="../dist/dew.lib.js"></script>
     <script>
