@@ -352,7 +352,7 @@ DEW.affectiveSpacesList = [
       { label: "Compassion", valueX: -88, valueY: -5 },
       { label: "Sorrow", valueX: -64, valueY: -8 },
       { label: "Bitterness", valueX: -88, valueY: -11 },
-      { label: "Nostaliga", valueX: -77, valueY: -14 },
+      { label: "Nostalgia", valueX: -77, valueY: -14 },
       { label: "Depression", valueX: -72, valueY: -17 },
       { label: "Melancholy", valueX: -75, valueY: -25 },
       { label: "Regret", valueX: -50, valueY: -36 },
