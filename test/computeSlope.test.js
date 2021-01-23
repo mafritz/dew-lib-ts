@@ -22,7 +22,7 @@ test("Compute a slope given x = random and y = random values", () => {
 });
 
 test("Compute a slope given x = positive and y = positive", () => {
-  expect(DEW.computeSlope(x_positive, y_positive)).toBeGreaterThanOrEqual(1);
+  expect(DEW.computeSlope(x_positive, y_positive)).toBeGreaterThanOrEqual(0);
   expect(DEW.computeSlope(x_positive, y_positive)).toBeLessThanOrEqual(90);
 });
 
