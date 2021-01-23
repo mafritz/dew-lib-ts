@@ -27,16 +27,16 @@ test("Compute a slope given x = positive and y = positive", () => {
 });
 
 test("Compute a slope given x = positive and y = negative", () => {
-  expect(DEW.computeSlope(x_positive, y_negative)).toBeGreaterThanOrEqual(91);
+  expect(DEW.computeSlope(x_positive, y_negative)).toBeGreaterThan(90);
   expect(DEW.computeSlope(x_positive, y_negative)).toBeLessThanOrEqual(180);
 });
 
 test("Compute a slope given x = negative and y = negative", () => {
-  expect(DEW.computeSlope(x_negative, y_negative)).toBeGreaterThanOrEqual(181);
+  expect(DEW.computeSlope(x_negative, y_negative)).toBeGreaterThan(180);
   expect(DEW.computeSlope(x_negative, y_negative)).toBeLessThanOrEqual(270);
 });
 
 test("Compute a slope given x = negative and y = positive", () => {
-  expect(DEW.computeSlope(x_negative, y_positive)).toBeGreaterThanOrEqual(271);
+  expect(DEW.computeSlope(x_negative, y_positive)).toBeGreaterThan(270);
   expect(DEW.computeSlope(x_negative, y_positive)).toBeLessThanOrEqual(360);
 });
