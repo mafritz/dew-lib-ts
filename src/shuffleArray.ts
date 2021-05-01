@@ -1,4 +1,4 @@
-DEW.shuffleArray = function(array: Array<any>): Array<any> {
+export const shuffleArray = function (array: Array<any>): Array<any> {
   let currentIndex = array.length;
   let temporaryValue, randomIndex;
 

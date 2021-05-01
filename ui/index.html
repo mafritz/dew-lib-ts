@@ -31,6 +31,16 @@
         id="sliderY"
       />
 
+      <label for="sliderY">Example range</label>
+      <input
+        type="range"
+        class="custom-range"
+        min="-100"
+        max="100"
+        step="1"
+        id="sliderZ"
+      />
+
       <p id="computeSlopeResult"></p>
 
       <div
@@ -38,70 +48,70 @@
         class="d-flex justify-content-between flex-fill"
       ></div>
     </div>
-    <script src="../dist/dew.lib.js"></script>
-    <script>
+    <script type="module">
+      import * as DEW from "../frontend/index.js";
+      console.log(DEW);
       let sliderX = document.getElementById("sliderX");
       let sliderY = document.getElementById("sliderY");
-      let computeSlopeResult = document.getElementById("computeSlopeResult");
+      let sliderZ = document.getElementById("sliderZ");
+
       let listOfFeelingsResult = document.getElementById(
         "listOfFeelingsResult"
       );
 
       const affectiveSpace = {
-        name: "EATMINT english circumplex",
-        description: "Translation of the 20 EATMINT emotions.",
+        id: "ry-s0AORKG",
         lang: "en",
-        algorithmType: "radial",
+        name: "Geneva Emotion Wheel version 3 (vector)",
+        description:
+          "The 20 emotions used in the third version of the Geneva Emotion Wheel",
+        algorithmType: "vector",
         dimX: "Valence",
-        dimY: "Control",
-        isGrid: false,
+        dimY: "Power",
+        isGrid: true,
         isPublic: true,
-        feelings: [
-          { label: "Confident", angle: 9 },
-          { label: "Interested", angle: 27 },
-          { label: "Amused", angle: 45 },
-          { label: "Delighted", angle: 63 },
-          { label: "Attentive", angle: 81 },
-          { label: "Satisfied", angle: 99 },
-          { label: "Relaxed", angle: 117 },
-          { label: "Surprised", angle: 135 },
-          { label: "Relieved", angle: 153 },
-          { label: "Empathic", angle: 171 },
-          { label: "Confused", angle: 189 },
-          { label: "Anxious", angle: 207 },
-          { label: "Bored", angle: 225 },
-          { label: "Stressed", angle: 243 },
-          { label: "Disappointed", angle: 261 },
-          { label: "Frustrated", angle: 279 },
-          { label: "Disgusted", angle: 315 },
-          { label: "Envious", angle: 297 },
-          { label: "Annoyed", angle: 333 },
-          { label: "Irritated", angle: 351 }
-        ],
-        citation:
-          "Fritz, M. A., & Bétrancourt, M. (2017). Providing emotional awareness in Computer-Supported Collaborative Learning with an Emotion Awareness Tool. In 17th Biennial EARLI Conference for Research on Learning and Instruction. Tampere, FL.",
         user: "admin",
-        id: "BkDX-gsCf",
-        createdAt: "2018-05-17T12:15:11.344Z",
-        updatedAt: "2018-05-27T16:45:02.031Z",
-        _id: 5
+        createdAt: "2018-03-20T12:30:11.200Z",
+        updatedAt: "2018-05-28T10:51:54.991Z",
+        feelings: [
+          { label: "Admiration", coordinates: [66, 9, 55] },
+          { label: "Amusement", coordinates: [67, 19, 44] },
+          { label: "Anger", coordinates: [-37, 47, -33] },
+          { label: "Compassion", coordinates: [-5, -55, -10] },
+          { label: "Contempt", coordinates: [-55, 43, 12] },
+          { label: "Contentment", coordinates: [77, 3, 27] },
+          { label: "Disappointment", coordinates: [-77, -12, 33] },
+          { label: "Disgust", coordinates: [-68, 20, 12] },
+          { label: "Fear", coordinates: [-61, 7, -97] },
+          { label: "Guilt", coordinates: [-57, -27, 35] },
+          { label: "Hate", coordinates: [-45, 43, 39] },
+          { label: "Interest", coordinates: [61, 25, 88] },
+          { label: "Joy", coordinates: [68, 7, -99] },
+          { label: "Love", coordinates: [58, -16, -73] },
+          { label: "Pleasure", coordinates: [71, 2, 53] },
+          { label: "Pride", coordinates: [72, 15, -41] },
+          { label: "Regret", coordinates: [-70, -19, 14] },
+          { label: "Relief", coordinates: [66, -36, 90] },
+          { label: "Sadness", coordinates: [-68, -35, -90] },
+          { label: "Shame", coordinates: [-61, -16, 77] },
+          { label: "Test 100 -100 100", coordinates: [100, -100, 100] },
+          { label: "Test 50 50 50", coordinates: [50, 50, 50] },
+        ],
+        _id: 3,
+        citation:
+          "Scherer, K. R., Shuman, V., Fontaine, J. R. J., & Soriano, C. (2013). The GRID meets the Wheel: Assessing emotional feeling via self-report. In J. R. J. Fontaine, K. R. Scherer, & C. Soriano (Eds.), Components of Emotional Meaning: A sourcebook (pp. 281–298). Oxford, UK: Oxford University Press.",
       };
 
       function updateInterface() {
-        computeSlopeResult.innerHTML = DEW.computeSlope(
+        let sortedAffectiveSpace = DEW.sortAffectiveSpace(affectiveSpace, [
           sliderX.value,
-          sliderY.value
-        );
-
-        let sortedAffectiveSpace = DEW.sortAffectiveSpace(
-          affectiveSpace,
-          sliderX.value,
-          sliderY.value
-        );
+          sliderY.value,
+          sliderZ.value,
+        ]);
 
         sortedAffectiveSpace = DEW.subsetFeelings(sortedAffectiveSpace, 6);
 
-        let sortedLabels = sortedAffectiveSpace.map(function(feeling) {
+        let sortedLabels = sortedAffectiveSpace.map(function (feeling) {
           return feeling.label;
         });
 
@@ -110,12 +120,12 @@
 
         listOfFeelingsResult.innerHTML = "";
 
-        sortedAffectiveSpace.forEach(function(feeling, index) {
+        sortedAffectiveSpace.forEach(function (feeling, index) {
           let button = document.createElement("button");
           button.innerHTML = feeling.label;
           button.setAttribute("data-position", index);
           button.classList.add("btn", "btn-warning", "text-white");
-          button.addEventListener("click", function() {
+          button.addEventListener("click", function () {
             console.log(feeling);
           });
 
@@ -123,11 +133,15 @@
         });
       }
 
-      sliderX.addEventListener("change", function() {
+      sliderX.addEventListener("change", function () {
         updateInterface();
       });
 
-      sliderY.addEventListener("change", function() {
+      sliderY.addEventListener("change", function () {
+        updateInterface();
+      });
+
+      sliderZ.addEventListener("change", function () {
         updateInterface();
       });
     </script>

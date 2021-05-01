@@ -1,23 +1,32 @@
-DEW.sortByVectorDistance = function(
+import { Feeling } from "./feeling.interface";
+
+export const sortByVectorDistance = function (
   feelings: Array<Feeling>,
-  x: number,
-  y: number
+  appraisals: number[]
 ): Array<Feeling> {
-  function orderByVector(firstFeeling: Feeling, secondFeeling: Feeling) {
-    //First feeling distance
-    let firstFeelingX = firstFeeling.valueX as number;
-    let firstFeelingDeltaX = x - firstFeelingX;
 
-    let firstFeelingY = firstFeeling.valueY as number;
-    let firstFeelingDeltaY = y - firstFeelingY;
+  // Sort by One Dimension
+  function sortByOneDimension(firstFeeling: Feeling, secondFeeling: Feeling) {
+    if ((appraisals[0] - firstFeeling.coordinates[0]) > (appraisals[0] - secondFeeling.coordinates[0])) {
+      return 1;
+    } else if ((appraisals[0] - firstFeeling.coordinates[0]) < (appraisals[0] - secondFeeling.coordinates[0])) {
+      return -1;
+    } else {
+      return 0;
+    }
+  }
 
-    //Second feeling distance
-    let secondFeelingX = secondFeeling.valueX as number;
-    let secondFeelingDeltaX = x - secondFeelingX;
+  // Sort by Two Dimensions
+  function sortByTwoDimensions(firstFeeling: Feeling, secondFeeling: Feeling) {
+    // Deltas first feeling
+    let firstFeelingDeltaX = appraisals[0] - firstFeeling.coordinates[0];
+    let firstFeelingDeltaY = appraisals[1] - firstFeeling.coordinates[1];
 
-    let secondFeelingY = secondFeeling.valueY as number;
-    let secondFeelingDeltaY = y - secondFeelingY;
+    // Deltas second feelings
+    let secondFeelingDeltaX = appraisals[0] - secondFeeling.coordinates[0];
+    let secondFeelingDeltaY = appraisals[1] - secondFeeling.coordinates[1];
 
+    // Return closer
     return (
       Math.sqrt(
         Math.pow(firstFeelingDeltaX, 2) + Math.pow(firstFeelingDeltaY, 2)
@@ -28,7 +37,44 @@ DEW.sortByVectorDistance = function(
     );
   }
 
-  feelings.sort(orderByVector);
+  // Sort by N Dimensions
+  function sortByNDimensions(firstFeeling: Feeling, secondFeeling: Feeling) {
+
+    // First feeling
+    let distanceFirstFeeling: number = 0;
+    for (let i = 0; i < appraisals.length; i++) {
+      distanceFirstFeeling += Math.pow((appraisals[i] - firstFeeling.coordinates[i]), 2)
+    }
+    distanceFirstFeeling = Math.sqrt(distanceFirstFeeling);
+
+    // Second feeling
+    let distanceSecondFeeling: number = 0;
+    for (let i = 0; i < appraisals.length; i++) {
+      distanceSecondFeeling += Math.pow((appraisals[i] - secondFeeling.coordinates[i]), 2)
+    }
+    distanceSecondFeeling = Math.sqrt(distanceSecondFeeling);
+
+    if (distanceFirstFeeling > distanceSecondFeeling) {
+      return 1;
+    } else if (distanceFirstFeeling < distanceSecondFeeling) {
+      return -1;
+    } else {
+      return 0;
+    }
+  }
+
+  //Check number of appraisals
+  let numAppraisals = appraisals.length;
+
+  if (numAppraisals === 1) {
+    feelings.sort(sortByOneDimension);
+  } else if (numAppraisals === 2) {
+    feelings.sort(sortByTwoDimensions)
+  } else if (numAppraisals > 2) {
+    feelings.sort(sortByNDimensions)
+  } else {
+    console.log("The number of appraisals is not valid");
+  }
 
   return feelings;
 };

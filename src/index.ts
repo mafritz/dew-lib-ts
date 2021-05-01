@@ -1,0 +1,9 @@
+export { computeSlope } from "./computeSlope";
+export { getRadialCoordinates } from "./getRadialCoordinates";
+export { getRandomNumber } from "./getRandomNumber";
+export { shuffleArray } from "./shuffleArray";
+export { sortAffectiveSpace } from "./sortAffectiveSpace";
+export { sortByRadialDistance } from "./sortByRadialDistance";
+export { sortByRandomOrder } from "./sortByRandomOrder";
+export { sortByVectorDistance } from "./sortByVectorDistance";
+export { subsetFeelings } from "./subsetFeelings";

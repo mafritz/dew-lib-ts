@@ -1,5 +1,4 @@
-const rewire = require("rewire");
-const DEW = rewire("../dist/dew.lib").__get__("DEW");
+const dew = require("../backend/");
 
 const affectiveSpace = {
   name: "EATMINT english circumplex",
@@ -30,7 +29,7 @@ const affectiveSpace = {
     { label: "Disgusted", angle: 315 },
     { label: "Envious", angle: 297 },
     { label: "Annoyed", angle: 333 },
-    { label: "Irritated", angle: 351 }
+    { label: "Irritated", angle: 351 },
   ],
   citation:
     "Fritz, M. A., & Bétrancourt, M. (2017). Providing emotional awareness in Computer-Supported Collaborative Learning with an Emotion Awareness Tool. In 17th Biennial EARLI Conference for Research on Learning and Instruction. Tampere, FL.",
@@ -38,15 +37,15 @@ const affectiveSpace = {
   id: "BkDX-gsCf",
   createdAt: "2018-05-17T12:15:11.344Z",
   updatedAt: "2018-05-27T16:45:02.031Z",
-  _id: 5
+  _id: 5,
 };
 
-let x = DEW.getRandomNumber(-100, 100);
-let y = DEW.getRandomNumber(-100, 100);
+let x = dew.getRandomNumber(-100, 100);
+let y = dew.getRandomNumber(-100, 100);
 
-let cardinality = DEW.getRandomNumber(1, affectiveSpace.feelings.length);
+let cardinality = dew.getRandomNumber(1, affectiveSpace.feelings.length);
 
 test("Subset a specific number of feelings", () => {
-  let feelings = DEW.sortAffectiveSpace(affectiveSpace, x, y);
-  expect(DEW.subsetFeelings(feelings, cardinality).length).toEqual(cardinality);
+  let feelings = dew.sortAffectiveSpace(affectiveSpace, x, y);
+  expect(dew.subsetFeelings(feelings, cardinality).length).toEqual(cardinality);
 });

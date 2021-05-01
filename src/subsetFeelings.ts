@@ -1,4 +1,6 @@
-DEW.subsetFeelings = function(
+import { Feeling } from "./feeling.interface";
+
+export const subsetFeelings = function (
   feelings: Array<Feeling>,
   cardinality: number
 ): Array<Feeling> {

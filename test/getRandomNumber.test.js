@@ -1,7 +1,6 @@
-const rewire = require("rewire");
-const DEW = rewire("../dist/dew.lib").__get__("DEW");
+const dew = require("../backend/");
 
 test("Generate random number between -100 and 100", () => {
-  expect(DEW.getRandomNumber(-100, 100)).toBeGreaterThanOrEqual(-100);
-  expect(DEW.getRandomNumber(-100, 100)).toBeLessThanOrEqual(100);
+  expect(dew.getRandomNumber(-100, 100)).toBeGreaterThanOrEqual(-100);
+  expect(dew.getRandomNumber(-100, 100)).toBeLessThanOrEqual(100);
 });

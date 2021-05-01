@@ -1,52 +1,36 @@
-const rewire = require("rewire");
-const DEW = rewire("../dist/dew.lib").__get__("DEW");
+const dew = require("../backend/");
 
 const affectiveSpace = {
-  id: "ry-s0AORKG",
-  lang: "en",
-  name: "Geneva Emotion Wheel version 3 (vector)",
-  description:
-    "The 20 emotions used in the third version of the Geneva Emotion Wheel",
   algorithmType: "vector",
-  dimX: "Valence",
-  dimY: "Power",
-  isGrid: true,
-  isPublic: true,
-  user: "admin",
-  createdAt: "2018-03-20T12:30:11.200Z",
-  updatedAt: "2018-05-28T10:51:54.991Z",
   feelings: [
-    { label: "Admiration", valueX: 66, valueY: 9 },
-    { label: "Amusement", valueX: 67, valueY: 19 },
-    { label: "Anger", valueX: -37, valueY: 47 },
-    { label: "Compassion", valueX: -5, valueY: -55 },
-    { label: "Contempt", valueX: -55, valueY: 43 },
-    { label: "Contentment", valueX: 77, valueY: 3 },
-    { label: "Disappointment", valueX: -77, valueY: -12 },
-    { label: "Disgust", valueX: -68, valueY: 20 },
-    { label: "Fear", valueX: -61, valueY: 7 },
-    { label: "Guilt", valueX: -57, valueY: -27 },
-    { label: "Hate", valueX: -45, valueY: 43 },
-    { label: "Interest", valueX: 61, valueY: 25 },
-    { label: "Joy", valueX: 68, valueY: 7 },
-    { label: "Love", valueX: 58, valueY: -16 },
-    { label: "Pleasure", valueX: 71, valueY: 2 },
-    { label: "Pride", valueX: 72, valueY: 15 },
-    { label: "Regret", valueX: -70, valueY: -19 },
-    { label: "Relief", valueX: 66, valueY: -36 },
-    { label: "Sadness", valueX: -68, valueY: -35 },
-    { label: "Shame", valueX: -61, valueY: -16 }
+    { label: "66, 9, 55", coordinates: [66, 9, 55] },
+    { label: "67, 19, 44", coordinates: [67, 19, 44] },
+    { label: "-37, 47, -33", coordinates: [-37, 47, -33] },
+    { label: "-5, -55, -10", coordinates: [-5, -55, -10] },
+    { label: "-55, 43, 12", coordinates: [-55, 43, 12] },
+    { label: "Contentment", coordinates: [77, 3, 27] },
+    { label: "Disappointment", coordinates: [-77, -12, 33] },
+    { label: "Disgust", coordinates: [-68, 20, 12] },
+    { label: "Fear", coordinates: [-61, 7, -97] },
+    { label: "Guilt", coordinates: [-57, -27, 35] },
+    { label: "Hate", coordinates: [-45, 43, 39] },
+    { label: "Interest", coordinates: [61, 25, 88] },
+    { label: "Joy", coordinates: [68, 7, -99] },
+    { label: "Love", coordinates: [58, -16, -73] },
+    { label: "Pleasure", coordinates: [71, 2, 53] },
+    { label: "Pride", coordinates: [72, 15, -41] },
+    { label: "Regret", coordinates: [-70, -19, 14] },
+    { label: "Relief", coordinates: [66, -36, 90] },
+    { label: "Sadness", coordinates: [-68, -35, -90] },
+    { label: "Shame", coordinates: [-61, -16, 77] },
   ],
-  _id: 3,
-  citation:
-    "Scherer, K. R., Shuman, V., Fontaine, J. R. J., & Soriano, C. (2013). The GRID meets the Wheel: Assessing emotional feeling via self-report. In J. R. J. Fontaine, K. R. Scherer, & C. Soriano (Eds.), Components of Emotional Meaning: A sourcebook (pp. 281–298). Oxford, UK: Oxford University Press."
 };
 
-let x = DEW.getRandomNumber(-100, 100);
-let y = DEW.getRandomNumber(-100, 100);
+let x = dew.getRandomNumber(-100, 100);
+let y = dew.getRandomNumber(-100, 100);
 
 test("Test sortAffectiveSpace function with vector order", () => {
-  expect(DEW.sortAffectiveSpace(affectiveSpace, x, y)).not.toStrictEqual(
+  expect(dew.sortAffectiveSpace(affectiveSpace, [x, y])).not.toStrictEqual(
     affectiveSpace.feelings
   );
 });

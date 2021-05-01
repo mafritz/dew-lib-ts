@@ -1,15 +1,7 @@
-const rewire = require("rewire");
-const DEW = rewire("../dist/dew.lib").__get__("DEW");
+const dew = require("../backend/");
 
 const affectiveSpace = {
-  name: "EATMINT english circumplex",
-  description: "Translation of the 20 EATMINT emotions.",
-  lang: "en",
   algorithmType: "random",
-  dimX: "Valence",
-  dimY: "Control",
-  isGrid: false,
-  isPublic: true,
   feelings: [
     { label: "Confident", angle: 9 },
     { label: "Interested", angle: 27 },
@@ -30,19 +22,12 @@ const affectiveSpace = {
     { label: "Disgusted", angle: 315 },
     { label: "Envious", angle: 297 },
     { label: "Annoyed", angle: 333 },
-    { label: "Irritated", angle: 351 }
+    { label: "Irritated", angle: 351 },
   ],
-  citation:
-    "Fritz, M. A., & Bétrancourt, M. (2017). Providing emotional awareness in Computer-Supported Collaborative Learning with an Emotion Awareness Tool. In 17th Biennial EARLI Conference for Research on Learning and Instruction. Tampere, FL.",
-  user: "admin",
-  id: "BkDX-gsCf",
-  createdAt: "2018-05-17T12:15:11.344Z",
-  updatedAt: "2018-05-27T16:45:02.031Z",
-  _id: 5
 };
 
 test("Test de sortAffectiveSpace function with random order", () => {
-  expect(DEW.sortAffectiveSpace(affectiveSpace)).not.toStrictEqual(
+  expect(dew.sortAffectiveSpace(affectiveSpace)).not.toStrictEqual(
     affectiveSpace.feelings
   );
 });

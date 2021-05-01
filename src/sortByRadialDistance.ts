@@ -1,9 +1,12 @@
-DEW.sortByRadialDistance = function(
+import { computeSlope } from "./computeSlope";
+import { Feeling } from "./feeling.interface";
+
+export const sortByRadialDistance = function (
   feelings: Array<Feeling>,
   x: number,
   y: number
 ): Array<Feeling> {
-  let currentSlope = DEW.computeSlope(x, y);
+  let currentSlope = computeSlope(x, y);
 
   function orderByAngle(firstFeeling: Feeling, secondFeeling: Feeling) {
     let firstFeelingAngle = firstFeeling.angle as number;

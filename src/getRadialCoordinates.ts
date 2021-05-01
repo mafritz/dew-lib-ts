@@ -1,4 +1,7 @@
-DEW.getRadialCoordinates = function(
+import { AffectiveSpace } from "./affectiveSpace.interface";
+import { Feeling } from "./feeling.interface";
+
+export const getRadialCoordinates = function (
   affectiveSpace: AffectiveSpace,
   center: number,
   radius: number
@@ -14,10 +17,11 @@ DEW.getRadialCoordinates = function(
 
   let copyOfAffectiveSpace = JSON.parse(JSON.stringify(affectiveSpace));
 
-  return copyOfAffectiveSpace.feelings.map(function(feeling: Feeling) {
+  return copyOfAffectiveSpace.feelings.map(function (feeling: Feeling) {
     let currentAngle = feeling.angle as number;
-    feeling.valueX = getRadialX(currentAngle);
-    feeling.valueY = getRadialY(currentAngle);
+    feeling.coordinates = [];
+    feeling.coordinates[0] = getRadialX(currentAngle);
+    feeling.coordinates[1] = getRadialY(currentAngle);
     return feeling;
   });
 };
