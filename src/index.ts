@@ -7,3 +7,4 @@ export { sortByRadialDistance } from "./sortByRadialDistance";
 export { sortByRandomOrder } from "./sortByRandomOrder";
 export { sortByVectorDistance } from "./sortByVectorDistance";
 export { subsetFeelings } from "./subsetFeelings";
+export { simulateVectorAffectiveSpace } from "./simulateVectorAffectiveSpace";
