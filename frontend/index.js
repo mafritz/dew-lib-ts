@@ -7,4 +7,5 @@ export { sortByRadialDistance } from "./sortByRadialDistance.js";
 export { sortByRandomOrder } from "./sortByRandomOrder.js";
 export { sortByVectorDistance } from "./sortByVectorDistance.js";
 export { subsetFeelings } from "./subsetFeelings.js";
+export { simulateVectorAffectiveSpace } from "./simulateVectorAffectiveSpace.js";
 //# sourceMappingURL=index.js.map

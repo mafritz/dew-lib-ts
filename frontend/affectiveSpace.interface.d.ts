@@ -1,4 +1,4 @@
-import { Feeling } from "./feeling.interface";
+import { Feeling } from "./feeling.interface.js";
 export interface AffectiveSpace {
     name: string;
     description: string;

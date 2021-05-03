@@ -7,13 +7,19 @@ export const sortByVectorDistance = function (
 
   // Sort by One Dimension
   function sortByOneDimension(firstFeeling: Feeling, secondFeeling: Feeling) {
-    if ((appraisals[0] - firstFeeling.coordinates[0]) > (appraisals[0] - secondFeeling.coordinates[0])) {
+    //Absolue delta first feeling
+    let deltaFirstFeeling = Math.abs(firstFeeling.coordinates[0] - appraisals[0]);
+    //Absolute delta second feeling
+    let deltaSecondFeeling = Math.abs(secondFeeling.coordinates[0] - appraisals[0]);
+
+    if (deltaFirstFeeling > deltaSecondFeeling) {
       return 1;
-    } else if ((appraisals[0] - firstFeeling.coordinates[0]) < (appraisals[0] - secondFeeling.coordinates[0])) {
+    } else if (deltaFirstFeeling < deltaSecondFeeling) {
       return -1;
     } else {
       return 0;
     }
+
   }
 
   // Sort by Two Dimensions
