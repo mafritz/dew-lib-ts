@@ -1,10 +1,14 @@
 export var sortByVectorDistance = function (feelings, appraisals) {
     // Sort by One Dimension
     function sortByOneDimension(firstFeeling, secondFeeling) {
-        if ((appraisals[0] - firstFeeling.coordinates[0]) > (appraisals[0] - secondFeeling.coordinates[0])) {
+        //Absolue delta first feeling
+        var deltaFirstFeeling = Math.abs(firstFeeling.coordinates[0] - appraisals[0]);
+        //Absolute delta second feeling
+        var deltaSecondFeeling = Math.abs(secondFeeling.coordinates[0] - appraisals[0]);
+        if (deltaFirstFeeling > deltaSecondFeeling) {
             return 1;
         }
-        else if ((appraisals[0] - firstFeeling.coordinates[0]) < (appraisals[0] - secondFeeling.coordinates[0])) {
+        else if (deltaFirstFeeling < deltaSecondFeeling) {
             return -1;
         }
         else {

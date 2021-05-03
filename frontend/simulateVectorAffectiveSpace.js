@@ -7,10 +7,13 @@ export function simulateVectorAffectiveSpace(numEmotions, numAppraisals) {
       randomCoordinates.push(getRandomNumber(-100, 100));
     }
     feelings.push({
-      label: randomCoordinates.join(", "),
+      label: "Feeling #".concat(String(i + 1)),
       coordinates: randomCoordinates,
     });
   }
-  return feelings;
+  return {
+    algorithmType: "vector",
+    feelings: feelings,
+  };
 }
 //# sourceMappingURL=simulateVectorAffectiveSpace.js.map
