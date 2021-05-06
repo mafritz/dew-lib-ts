@@ -12,7 +12,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build-browser": "esbuild src/index.ts --bundle --outfile=dist/dew-core.js --global-name=DEW --minify --sourcemap=external"
   },
   "author": "",
   "license": "ISC"
