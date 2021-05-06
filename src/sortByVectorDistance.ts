@@ -1,4 +1,6 @@
 import { Feeling } from "./feeling.interface";
+import { computeUniDimensionalDistance } from "./computeUniDimensionalDistance";
+import { computeMultiDimensionalDistance } from "./computeMultiDimensionalDistance";
 
 export const sortByVectorDistance = function (
   feelings: Array<Feeling>,
@@ -8,9 +10,9 @@ export const sortByVectorDistance = function (
   // Sort by One Dimension
   function sortByOneDimension(firstFeeling: Feeling, secondFeeling: Feeling) {
     //Absolue delta first feeling
-    let deltaFirstFeeling = Math.abs(firstFeeling.coordinates[0] - appraisals[0]);
+    let deltaFirstFeeling = computeUniDimensionalDistance(firstFeeling.coordinates, appraisals);
     //Absolute delta second feeling
-    let deltaSecondFeeling = Math.abs(secondFeeling.coordinates[0] - appraisals[0]);
+    let deltaSecondFeeling = computeUniDimensionalDistance(secondFeeling.coordinates, appraisals);
 
     if (deltaFirstFeeling > deltaSecondFeeling) {
       return 1;
@@ -26,18 +28,10 @@ export const sortByVectorDistance = function (
   function sortByMultiDimensions(firstFeeling: Feeling, secondFeeling: Feeling) {
 
     // First feeling
-    let distanceFirstFeeling: number = 0;
-    for (let i = 0; i < appraisals.length; i++) {
-      distanceFirstFeeling += Math.pow((appraisals[i] - firstFeeling.coordinates[i]), 2)
-    }
-    distanceFirstFeeling = Math.sqrt(distanceFirstFeeling);
+    let distanceFirstFeeling: number = computeMultiDimensionalDistance(appraisals, firstFeeling.coordinates);
 
     // Second feeling
-    let distanceSecondFeeling: number = 0;
-    for (let i = 0; i < appraisals.length; i++) {
-      distanceSecondFeeling += Math.pow((appraisals[i] - secondFeeling.coordinates[i]), 2)
-    }
-    distanceSecondFeeling = Math.sqrt(distanceSecondFeeling);
+    let distanceSecondFeeling: number = computeMultiDimensionalDistance(appraisals, secondFeeling.coordinates);
 
     if (distanceFirstFeeling > distanceSecondFeeling) {
       return 1;

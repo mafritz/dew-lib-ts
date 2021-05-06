@@ -4,19 +4,21 @@
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports"], factory);
+        define(["require", "exports", "./computeUniDimensionalDistance", "./computeMultiDimensionalDistance"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.sortByVectorDistance = void 0;
+    const computeUniDimensionalDistance_1 = require("./computeUniDimensionalDistance");
+    const computeMultiDimensionalDistance_1 = require("./computeMultiDimensionalDistance");
     const sortByVectorDistance = function (feelings, appraisals) {
         // Sort by One Dimension
         function sortByOneDimension(firstFeeling, secondFeeling) {
             //Absolue delta first feeling
-            let deltaFirstFeeling = Math.abs(firstFeeling.coordinates[0] - appraisals[0]);
+            let deltaFirstFeeling = computeUniDimensionalDistance_1.computeUniDimensionalDistance(firstFeeling.coordinates, appraisals);
             //Absolute delta second feeling
-            let deltaSecondFeeling = Math.abs(secondFeeling.coordinates[0] - appraisals[0]);
+            let deltaSecondFeeling = computeUniDimensionalDistance_1.computeUniDimensionalDistance(secondFeeling.coordinates, appraisals);
             if (deltaFirstFeeling > deltaSecondFeeling) {
                 return 1;
             }
@@ -30,17 +32,9 @@
         // Sort by Multiple Dimensions
         function sortByMultiDimensions(firstFeeling, secondFeeling) {
             // First feeling
-            let distanceFirstFeeling = 0;
-            for (let i = 0; i < appraisals.length; i++) {
-                distanceFirstFeeling += Math.pow((appraisals[i] - firstFeeling.coordinates[i]), 2);
-            }
-            distanceFirstFeeling = Math.sqrt(distanceFirstFeeling);
+            let distanceFirstFeeling = computeMultiDimensionalDistance_1.computeMultiDimensionalDistance(appraisals, firstFeeling.coordinates);
             // Second feeling
-            let distanceSecondFeeling = 0;
-            for (let i = 0; i < appraisals.length; i++) {
-                distanceSecondFeeling += Math.pow((appraisals[i] - secondFeeling.coordinates[i]), 2);
-            }
-            distanceSecondFeeling = Math.sqrt(distanceSecondFeeling);
+            let distanceSecondFeeling = computeMultiDimensionalDistance_1.computeMultiDimensionalDistance(appraisals, secondFeeling.coordinates);
             if (distanceFirstFeeling > distanceSecondFeeling) {
                 return 1;
             }
