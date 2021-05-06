@@ -1,0 +1,1 @@
+{"version":3,"file":"computeUnidimensionalDistance.js","sourceRoot":"","sources":["../src/computeUnidimensionalDistance.ts"],"names":[],"mappings":";;;;;;;;;;;;IAAO,MAAM,6BAA6B,GAAG,UAAU,UAAoB,EAAE,WAAqB;QAC9F,OAAO,IAAI,CAAC,GAAG,CAAC,UAAU,CAAC,CAAC,CAAC,GAAG,WAAW,CAAC,CAAC,CAAC,CAAC,CAAC;IACpD,CAAC,CAAA;IAFY,QAAA,6BAA6B,iCAEzC"}

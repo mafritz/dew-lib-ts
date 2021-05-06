@@ -22,29 +22,8 @@ export const sortByVectorDistance = function (
 
   }
 
-  // Sort by Two Dimensions
-  function sortByTwoDimensions(firstFeeling: Feeling, secondFeeling: Feeling) {
-    // Deltas first feeling
-    let firstFeelingDeltaX = appraisals[0] - firstFeeling.coordinates[0];
-    let firstFeelingDeltaY = appraisals[1] - firstFeeling.coordinates[1];
-
-    // Deltas second feelings
-    let secondFeelingDeltaX = appraisals[0] - secondFeeling.coordinates[0];
-    let secondFeelingDeltaY = appraisals[1] - secondFeeling.coordinates[1];
-
-    // Return closer
-    return (
-      Math.sqrt(
-        Math.pow(firstFeelingDeltaX, 2) + Math.pow(firstFeelingDeltaY, 2)
-      ) -
-      Math.sqrt(
-        Math.pow(secondFeelingDeltaX, 2) + Math.pow(secondFeelingDeltaY, 2)
-      )
-    );
-  }
-
-  // Sort by N Dimensions
-  function sortByNDimensions(firstFeeling: Feeling, secondFeeling: Feeling) {
+  // Sort by Multiple Dimensions
+  function sortByMultiDimensions(firstFeeling: Feeling, secondFeeling: Feeling) {
 
     // First feeling
     let distanceFirstFeeling: number = 0;
@@ -74,10 +53,8 @@ export const sortByVectorDistance = function (
 
   if (numAppraisals === 1) {
     feelings.sort(sortByOneDimension);
-  } else if (numAppraisals === 2) {
-    feelings.sort(sortByTwoDimensions)
-  } else if (numAppraisals > 2) {
-    feelings.sort(sortByNDimensions)
+  } else if (numAppraisals > 1) {
+    feelings.sort(sortByMultiDimensions)
   } else {
     console.log("The number of appraisals is not valid");
   }

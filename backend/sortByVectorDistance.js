@@ -27,20 +27,8 @@
                 return 0;
             }
         }
-        // Sort by Two Dimensions
-        function sortByTwoDimensions(firstFeeling, secondFeeling) {
-            // Deltas first feeling
-            let firstFeelingDeltaX = appraisals[0] - firstFeeling.coordinates[0];
-            let firstFeelingDeltaY = appraisals[1] - firstFeeling.coordinates[1];
-            // Deltas second feelings
-            let secondFeelingDeltaX = appraisals[0] - secondFeeling.coordinates[0];
-            let secondFeelingDeltaY = appraisals[1] - secondFeeling.coordinates[1];
-            // Return closer
-            return (Math.sqrt(Math.pow(firstFeelingDeltaX, 2) + Math.pow(firstFeelingDeltaY, 2)) -
-                Math.sqrt(Math.pow(secondFeelingDeltaX, 2) + Math.pow(secondFeelingDeltaY, 2)));
-        }
-        // Sort by N Dimensions
-        function sortByNDimensions(firstFeeling, secondFeeling) {
+        // Sort by Multiple Dimensions
+        function sortByMultiDimensions(firstFeeling, secondFeeling) {
             // First feeling
             let distanceFirstFeeling = 0;
             for (let i = 0; i < appraisals.length; i++) {
@@ -68,11 +56,8 @@
         if (numAppraisals === 1) {
             feelings.sort(sortByOneDimension);
         }
-        else if (numAppraisals === 2) {
-            feelings.sort(sortByTwoDimensions);
-        }
-        else if (numAppraisals > 2) {
-            feelings.sort(sortByNDimensions);
+        else if (numAppraisals > 1) {
+            feelings.sort(sortByMultiDimensions);
         }
         else {
             console.log("The number of appraisals is not valid");
