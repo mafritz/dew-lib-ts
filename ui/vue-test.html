@@ -96,6 +96,7 @@
                   <th width="1%">#</th>
                   <th>Feeling</th>
                   <th v-for="n in numAppraisals" :key="n">Appraisal {{n}}</th>
+                  <th>&#916;</th>
                 </tr>
                 <tr class="bg-success text-white">
                   <th></th>
@@ -103,6 +104,7 @@
                   <th v-for="(appraisal, index) in appraisals">
                     {{ appraisal.value }}
                   </th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -111,6 +113,12 @@
                   <td>{{feeling.label}}</td>
                   <td v-for="i in feeling.coordinates.length" :key="i">
                     {{feeling.coordinates[i-1]}}
+                  </td>
+                  <td v-if="numAppraisals">
+                    <span class="badge bg-dark"
+                      >{{ computeDistance(appraisals,
+                      feeling.coordinates)}}</span
+                    >
                   </td>
                 </tr>
               </tbody>
@@ -202,6 +210,25 @@
               currentAppraisalProfile
             );
             this.orderedFeelings = currentOrderedFeelings;
+          },
+          computeDistance(appraisals, feeling) {
+            let distance = 0;
+            let currentAppraisalProfile = this.appraisals.map(function (el) {
+              return el.value;
+            });
+            if (currentAppraisalProfile.length == 1) {
+              distance = DEW.computeUniDimensionalDistance(
+                currentAppraisalProfile,
+                feeling
+              );
+            } else {
+              distance = DEW.computeMultiDimensionalDistance(
+                currentAppraisalProfile,
+                feeling
+              );
+            }
+
+            return Math.round(distance);
           },
         },
         created() {},

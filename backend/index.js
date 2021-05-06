@@ -4,12 +4,12 @@
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "./computeSlope", "./getRadialCoordinates", "./getRandomNumber", "./shuffleArray", "./sortAffectiveSpace", "./sortByRadialDistance", "./sortByRandomOrder", "./sortByVectorDistance", "./subsetFeelings", "./simulateVectorAffectiveSpace"], factory);
+        define(["require", "exports", "./computeSlope", "./getRadialCoordinates", "./getRandomNumber", "./shuffleArray", "./sortAffectiveSpace", "./sortByRadialDistance", "./sortByRandomOrder", "./sortByVectorDistance", "./subsetFeelings", "./simulateVectorAffectiveSpace", "./computeUniDimensionalDistance", "./computeMultiDimensionalDistance"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.simulateVectorAffectiveSpace = exports.subsetFeelings = exports.sortByVectorDistance = exports.sortByRandomOrder = exports.sortByRadialDistance = exports.sortAffectiveSpace = exports.shuffleArray = exports.getRandomNumber = exports.getRadialCoordinates = exports.computeSlope = void 0;
+    exports.computeMultiDimensionalDistance = exports.computeUniDimensionalDistance = exports.simulateVectorAffectiveSpace = exports.subsetFeelings = exports.sortByVectorDistance = exports.sortByRandomOrder = exports.sortByRadialDistance = exports.sortAffectiveSpace = exports.shuffleArray = exports.getRandomNumber = exports.getRadialCoordinates = exports.computeSlope = void 0;
     var computeSlope_1 = require("./computeSlope");
     Object.defineProperty(exports, "computeSlope", { enumerable: true, get: function () { return computeSlope_1.computeSlope; } });
     var getRadialCoordinates_1 = require("./getRadialCoordinates");
@@ -30,5 +30,9 @@
     Object.defineProperty(exports, "subsetFeelings", { enumerable: true, get: function () { return subsetFeelings_1.subsetFeelings; } });
     var simulateVectorAffectiveSpace_1 = require("./simulateVectorAffectiveSpace");
     Object.defineProperty(exports, "simulateVectorAffectiveSpace", { enumerable: true, get: function () { return simulateVectorAffectiveSpace_1.simulateVectorAffectiveSpace; } });
+    var computeUniDimensionalDistance_1 = require("./computeUniDimensionalDistance");
+    Object.defineProperty(exports, "computeUniDimensionalDistance", { enumerable: true, get: function () { return computeUniDimensionalDistance_1.computeUniDimensionalDistance; } });
+    var computeMultiDimensionalDistance_1 = require("./computeMultiDimensionalDistance");
+    Object.defineProperty(exports, "computeMultiDimensionalDistance", { enumerable: true, get: function () { return computeMultiDimensionalDistance_1.computeMultiDimensionalDistance; } });
 });
 //# sourceMappingURL=index.js.map

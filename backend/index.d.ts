@@ -8,3 +8,5 @@ export { sortByRandomOrder } from "./sortByRandomOrder";
 export { sortByVectorDistance } from "./sortByVectorDistance";
 export { subsetFeelings } from "./subsetFeelings";
 export { simulateVectorAffectiveSpace } from "./simulateVectorAffectiveSpace";
+export { computeUniDimensionalDistance } from "./computeUniDimensionalDistance";
+export { computeMultiDimensionalDistance } from "./computeMultiDimensionalDistance";
