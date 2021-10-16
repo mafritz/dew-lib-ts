@@ -15,7 +15,8 @@
   "scripts": {
     "test": "jest",
     "build-node": "tsc --build tsconfig.json",
-    "build-browser": "esbuild src/index.ts --bundle --outfile=dist/dew-core.js --global-name=DEW --minify --sourcemap=external"
+    "build-browser": "esbuild src/index.ts --bundle --outfile=dist/dew-core.js --global-name=DEW --sourcemap=external",
+    "build-browser-minified": "esbuild src/index.ts --bundle --outfile=dist/dew-core.min.js --global-name=DEW --minify --sourcemap=external"
   },
   "author": "",
   "license": "ISC"
