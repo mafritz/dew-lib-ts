@@ -16,7 +16,7 @@
         for (let i = 0; i < numEmotions; i++) {
             let randomCoordinates = [];
             for (let j = 0; j < numAppraisals; j++) {
-                randomCoordinates.push(getRandomNumber_1.getRandomNumber(-100, 100));
+                randomCoordinates.push((0, getRandomNumber_1.getRandomNumber)(-100, 100));
             }
             feelings.push({
                 label: "Feeling #".concat(String(i + 1)),

@@ -23,16 +23,16 @@
         if (space.algorithmType.toLocaleLowerCase() === "radial") {
             //Check if both x and y are 0. If they are, provide random number instead
             if (appraisals[0] === 0 && appraisals[1] === 0) {
-                appraisals[0] = getRandomNumber_1.getRandomNumber(-100, 100);
-                appraisals[1] = getRandomNumber_1.getRandomNumber(-100, 100);
+                appraisals[0] = (0, getRandomNumber_1.getRandomNumber)(-100, 100);
+                appraisals[1] = (0, getRandomNumber_1.getRandomNumber)(-100, 100);
             }
-            sortedFeelings = sortByRadialDistance_1.sortByRadialDistance(copyOfFeelings, appraisals[0], appraisals[1]);
+            sortedFeelings = (0, sortByRadialDistance_1.sortByRadialDistance)(copyOfFeelings, appraisals[0], appraisals[1]);
         }
         else if (space.algorithmType.toLocaleLowerCase() === "vector") {
-            sortedFeelings = sortByVectorDistance_1.sortByVectorDistance(copyOfFeelings, appraisals);
+            sortedFeelings = (0, sortByVectorDistance_1.sortByVectorDistance)(copyOfFeelings, appraisals);
         }
         else if (space.algorithmType.toLocaleLowerCase() === "random") {
-            sortedFeelings = sortByRandomOrder_1.sortByRandomOrder(copyOfFeelings);
+            sortedFeelings = (0, sortByRandomOrder_1.sortByRandomOrder)(copyOfFeelings);
         }
         else {
             console.log("Provide a valid algorithm type.");

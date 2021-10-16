@@ -16,9 +16,9 @@
         // Sort by One Dimension
         function sortByOneDimension(firstFeeling, secondFeeling) {
             //Absolue delta first feeling
-            let deltaFirstFeeling = computeUniDimensionalDistance_1.computeUniDimensionalDistance(firstFeeling.coordinates, appraisals);
+            let deltaFirstFeeling = (0, computeUniDimensionalDistance_1.computeUniDimensionalDistance)(firstFeeling.coordinates, appraisals);
             //Absolute delta second feeling
-            let deltaSecondFeeling = computeUniDimensionalDistance_1.computeUniDimensionalDistance(secondFeeling.coordinates, appraisals);
+            let deltaSecondFeeling = (0, computeUniDimensionalDistance_1.computeUniDimensionalDistance)(secondFeeling.coordinates, appraisals);
             if (deltaFirstFeeling > deltaSecondFeeling) {
                 return 1;
             }
@@ -32,9 +32,9 @@
         // Sort by Multiple Dimensions
         function sortByMultiDimensions(firstFeeling, secondFeeling) {
             // First feeling
-            let distanceFirstFeeling = computeMultiDimensionalDistance_1.computeMultiDimensionalDistance(appraisals, firstFeeling.coordinates);
+            let distanceFirstFeeling = (0, computeMultiDimensionalDistance_1.computeMultiDimensionalDistance)(appraisals, firstFeeling.coordinates);
             // Second feeling
-            let distanceSecondFeeling = computeMultiDimensionalDistance_1.computeMultiDimensionalDistance(appraisals, secondFeeling.coordinates);
+            let distanceSecondFeeling = (0, computeMultiDimensionalDistance_1.computeMultiDimensionalDistance)(appraisals, secondFeeling.coordinates);
             if (distanceFirstFeeling > distanceSecondFeeling) {
                 return 1;
             }
